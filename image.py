@@ -41,8 +41,4 @@ def histMatrixFromDir(directory):
 		i = i + 1
 	
 	return H
-	
-V = vectMatrixFromDir('Data/Mer/')
-H = histMatrixFromDir('Data/Mer/')
-
 
