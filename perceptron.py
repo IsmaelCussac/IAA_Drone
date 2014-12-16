@@ -2,11 +2,6 @@ import math
 from numpy import *
 from noyau import *
 
-sample = array([[1.,0.],[0.,1.],[1.,1.]])
-target = array([1,1,-1])
-
-t_sample= array([[0.,0.],[3.,4.],[2.,0.]])
-
 
 def learnKernelPerceptron(data, target, kernel, h):
 	alpha = zeros(len(target))
@@ -38,8 +33,9 @@ def predictKernelPerceptron(kp, data, target, x, kernel, h):
 	if somme < 0:
 		return -1
 	return 1
-	
-alpha = learnKernelPerceptron(sample, target, 0, 1)
-for i in range(3):
-	print predictKernelPerceptron(alpha, sample, target, t_sample[i], 1, 1)
 
+"""	
+alpha = learnKernelPerceptron(sample, target, 1, 1)
+for i in range(len(t_sample)):
+	print predictKernelPerceptron(alpha, sample, target, t_sample[i], 1, 1)
+""""
