@@ -38,4 +38,4 @@ def predictKernelPerceptron(kp, data, target, x, kernel, h):
 alpha = learnKernelPerceptron(sample, target, 1, 1)
 for i in range(len(t_sample)):
 	print predictKernelPerceptron(alpha, sample, target, t_sample[i], 1, 1)
-""""
+"""
