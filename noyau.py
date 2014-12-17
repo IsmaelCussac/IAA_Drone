@@ -1,11 +1,6 @@
 import math 
 from numpy import *
-"""
-sample = array([[1.,0.],[0.,1.],[1.,1.]])
-target = array([1,0,0])
 
-t_sample= array([[0,0],[3.,4.],[2.,0.]])
-"""
 def noyauGaussien(v1, v2, sigma):
 
 	if sigma != 0 :
@@ -28,7 +23,7 @@ def noyauPolynomial(v1, v2, k):
 def computeGram(data, kernel, h):
 
 	nex,nfeat = data.shape
-	#G = [[0.] * nex for _ in range(nex)]
+
 	G = zeros(shape=(nex,nex))
 	for i in range(nex):
 		for j in range(nex):

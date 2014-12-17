@@ -34,8 +34,6 @@ def predictKernelPerceptron(kp, data, target, x, kernel, h):
 		return -1
 	return 1
 
-"""	
-alpha = learnKernelPerceptron(sample, target, 1, 1)
-for i in range(len(t_sample)):
-	print predictKernelPerceptron(alpha, sample, target, t_sample[i], 1, 1)
-"""
+
+def bestHyperparameter(data, target, kernel):
+	print ""
