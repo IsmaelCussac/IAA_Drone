@@ -80,17 +80,10 @@ def bestHyperparameter(data, target, kernel):
 	
 	
 kernel = noyauGaussien
-    
-h, err = bestHyperparameter(t_sample, t_target, kernel)
-print "Errors :"
-print err
-print "Best hyperparameter for polynomial kernel =", h
-    
-"""    
-kernel = noyauPolynomial
+#kernel = noyauPolynomial
 
-h, err = bestHyperparameter(sample, target, kernel)
-print "Errors :"
+h, err = bestHyperparameter(t_sample, t_target, kernel)
+print "Erreurs :"
 print err
-print "Best hyperparameter for polynomial kernel =", h
-"""
+print "Best hyperparameter =", h
+
