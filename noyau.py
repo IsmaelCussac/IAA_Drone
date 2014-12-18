@@ -27,10 +27,7 @@ def computeGram(data, kernel, h):
 	G = zeros(shape=(nex,nex))
 	for i in range(nex):
 		for j in range(nex):
-			if kernel == 1 :
-				G[i][j] = noyauGaussien(data[i], data[j], h)
-			else :
-				G[i][j] = noyauPolynomial(data[i], data[j], h)
+			G[i][j] = kernel(data[i], data[j], h)
 	
 	return G
 

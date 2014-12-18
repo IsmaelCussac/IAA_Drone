@@ -4,7 +4,7 @@ from image import *
 from numpy import *
 from projetM1 import *
 
-kernel = 0
+kernel = 1
 h = 1.
 
 def assemble(mer, autre):
@@ -20,7 +20,9 @@ def assemble(mer, autre):
 
 def predit(data, target, im, kernel, h):
 
-	alpha = learnKernelPerceptron(data, target, kernel, h)
+	alpha, echec = learnKernelPerceptron(data, target, kernel, h)
+	if echec:
+		return
 	T = zeros(len(im))
 	for i in range(len(im)):
 		T[i] = predictKernelPerceptron(alpha, data, target, im[i], kernel, h)
