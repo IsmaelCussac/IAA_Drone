@@ -63,7 +63,7 @@ def calculeErreur(d_train, t_train, d_test, t_test, kernel, h):
 
 	return erreur
 
-def bestHyperparameter(data, target, kernel):
+def bestHyperparametre(data, target, kernel):
 	h = 1
 	erreur_min = 1.0
 	err = ones(10)
@@ -73,7 +73,6 @@ def bestHyperparameter(data, target, kernel):
 	for i in range(0,10):
 		err[i] = calculeErreur(d_train, t_train, d_test, t_test, kernel, i+1)
 		if err[i] < erreur_min:
-			print "ici"
 			erreur_min = err[i]
 			h = i+1
             
@@ -83,7 +82,7 @@ def bestHyperparameter(data, target, kernel):
 kernel = noyauGaussien
 #kernel = noyauPolynomial
 
-h, err = bestHyperparameter(t_sample, t_target, kernel)
+h, err = bestHyperparametre(t_sample, t_target, kernel)
 print "Erreurs :"
 print err
 print "Best hyperparameter =", h

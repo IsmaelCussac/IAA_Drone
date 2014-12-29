@@ -29,12 +29,15 @@ def predit(data, target, im, kernel, h):
 		T[i] = predictKernelPerceptron(alpha, data, target, im[i], kernel, h)
 	print "Classes predites: \n", T
 
+
 def trouveHyperParam(data, target):
-	h, err = bestHyperparameter(data, target, kernel)
+	h, err = bestHyperparametre(data, target, kernel)
 	print "Erreurs :"
 	print err
-	print "Best hyperparameter =", h
+	print "Erreur moyenne:", err.mean()
+	print "Best hyperparametre =", h
 	return h
+
 
 def histogramTest(kernel, h):
 
@@ -63,7 +66,7 @@ def vectorTest(kernel, h):
 	
 
 	
-#vectorTest(kernel, h)
-histogramTest(kernel, h)
+vectorTest(kernel, h)
+#histogramTest(kernel, h)
 
 
