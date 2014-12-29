@@ -6,8 +6,8 @@ from sklearn import cross_validation
 sample = array([[3.5,0.5],[2.5,2.],[4.5,1.5],[5.,2.5],[6.,4.],[2.5,3.5],[1.,4.],[2.,6.5],[4.,5.5]])
 target = array([-1,-1,-1,-1,-1,1,1,1,1])
 
-t_sample= array([[2.,3.],[0.,5.],[4.5,5.5],[3.,6.],[7.,6.5],[0.5,2.],[1.5,2.],[2.5,1.],[4.5,3.5],[6.5,3.],[7.,5.5]])
-t_target = array([1,1,1,1,1,-1,-1,-1,-1,-1,-1])
+t_sample= array([[2.,3.],[0.,5.],[4.5,5.5],[3.,6.],[7.,6.5],[0.5,2.],[1.5,2.],[2.5,1.],[4.5,3.5],[6.5,3.],[7.,5.5],[3.5,0.5],[2.5,2.],[4.5,1.5],[5.,2.5],[6.,4.],[2.5,3.5],[1.,4.],[2.,6.5],[4.,5.5]])
+t_target = array([1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,1,1,1])
 
 def learnKernelPerceptron(data, target, kernel, h):
 	boucle = 0
@@ -73,12 +73,13 @@ def bestHyperparameter(data, target, kernel):
 	for i in range(0,10):
 		err[i] = calculeErreur(d_train, t_train, d_test, t_test, kernel, i+1)
 		if err[i] < erreur_min:
+			print "ici"
 			erreur_min = err[i]
 			h = i+1
             
 	return (h, err)
 	
-	
+"""	
 kernel = noyauGaussien
 #kernel = noyauPolynomial
 
@@ -86,4 +87,4 @@ h, err = bestHyperparameter(t_sample, t_target, kernel)
 print "Erreurs :"
 print err
 print "Best hyperparameter =", h
-
+"""

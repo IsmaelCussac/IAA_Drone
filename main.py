@@ -4,7 +4,8 @@ from image import *
 from numpy import *
 from projetM1 import *
 
-kernel = 1
+#kernel = noyauGaussien
+kernel = noyauPolynomial
 h = 1.
 
 def assemble(mer, autre):
@@ -28,6 +29,12 @@ def predit(data, target, im, kernel, h):
 		T[i] = predictKernelPerceptron(alpha, data, target, im[i], kernel, h)
 	print "Classes predites: \n", T
 
+def trouveHyperParam(data, target):
+	h, err = bestHyperparameter(data, target, kernel)
+	print "Erreurs :"
+	print err
+	print "Best hyperparameter =", h
+	return h
 
 def histogramTest(kernel, h):
 
@@ -38,6 +45,7 @@ def histogramTest(kernel, h):
 	autreHist = histMatrixFromDir('Data/Ailleurs/')
 	
 	data, target = assemble(merHist, autreHist)
+	h = trouveHyperParam(data, target)
 	predit(data, target, imHist, kernel, h)
 	
 
@@ -50,8 +58,12 @@ def vectorTest(kernel, h):
 	autreVect = vectMatrixFromDir('Data/Ailleurs/')
 	
 	data, target = assemble(merVect, autreVect)
+	h = trouveHyperParam(data, target)
 	predit(data, target, imVect, kernel, h)
 	
+
 	
-vectorTest(kernel, h)
-#histogramTest(kernel, h)
+#vectorTest(kernel, h)
+histogramTest(kernel, h)
+
+
