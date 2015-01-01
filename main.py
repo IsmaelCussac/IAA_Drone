@@ -4,9 +4,8 @@ from image import *
 from numpy import *
 from projetM1 import *
 
-#kernel = noyauGaussien
-kernel = noyauPolynomial
-h = 1.
+kernel = noyauGaussien
+#kernel = noyauPolynomial
 
 def assemble(mer, autre):
 
@@ -39,34 +38,34 @@ def trouveHyperParam(data, target):
 	return h
 
 
-def histogramTest(kernel, h):
+def histogramTest(kernel):
 
-	print "Histogramme: kernel =", kernel," h =", h
-	
 	imHist = importImageHist()
 	merHist = histMatrixFromDir('Data/Mer/')
 	autreHist = histMatrixFromDir('Data/Ailleurs/')
 	
 	data, target = assemble(merHist, autreHist)
+	
 	h = trouveHyperParam(data, target)
+	print "Histogramme: kernel =", kernel," h =", h
 	predit(data, target, imHist, kernel, h)
 	
 
-def vectorTest(kernel, h):
+def vectorTest(kernel):
 
-	print "Vecteur: kernel =", kernel," h =", h
-	
 	imVect = importImageVect()
 	merVect = vectMatrixFromDir('Data/Mer/')
 	autreVect = vectMatrixFromDir('Data/Ailleurs/')
 	
 	data, target = assemble(merVect, autreVect)
+	
 	h = trouveHyperParam(data, target)
+	print "Vecteur: kernel =", kernel," h =", h
 	predit(data, target, imVect, kernel, h)
 	
 
 	
-vectorTest(kernel, h)
-#histogramTest(kernel, h)
+vectorTest(kernel)
+#histogramTest(kernel)
 
 

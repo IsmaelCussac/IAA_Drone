@@ -37,12 +37,10 @@ def learnKernelPerceptron(data, target, kernel, h):
 
 def predictKernelPerceptron(alpha, data, target, x, kernel, h):
 	somme = 0
-	if kernel == 1 :
-		for i in range(len(alpha)):
-			somme = somme + alpha[i] * target[i] * noyauGaussien(x, data[i], h)
-	else :
-		for i in range(len(alpha)):
-			somme = somme + alpha[i] * target[i] * noyauPolynomial(x, data[i], h)
+	
+	for i in range(len(alpha)):
+		somme = somme + alpha[i] * target[i] * kernel(x, data[i], h)
+		
 	if somme < 0:
 		return -1
 	return 1
