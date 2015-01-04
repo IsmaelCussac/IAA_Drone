@@ -4,23 +4,22 @@ from image import *
 from numpy import *
 from projetM1 import *
 
-kernel = noyauGaussien
-#kernel = noyauPolynomial
-
+#Concatene les images de l'echantillon d'apprentissage (mer et autre)
 def assemble(mer, autre):
 
 	merTarget = ones(len(mer))
 	autreTarget = [-1.] * len(autre)
 	
 	data = concatenate((mer, autre))
-	target = concatenate((merTarget,autreTarget))
+	target = concatenate((merTarget, autreTarget))
 	
 	return data, target
 
-
+#Construit le perceptron a partir des donnees puis predit la classe de l'echantillon
 def predit(data, target, im, kernel, h):
 
-	alpha, echec = learnKernelPerceptron(data, target, kernel, h)
+	alpha, echec = learnKernelPerceptron(data, target, kernel, h, 10000)
+
 	if echec:
 		return
 	T = zeros(len(im))
@@ -37,12 +36,13 @@ def trouveHyperParam(data, target):
 	print "Best hyperparametre =", h
 	return h
 
-
+#Execute le programme avec les histogrammes
 def histogramTest(kernel):
 
 	imHist = importImageHist()
 	merHist = histMatrixFromDir('Data/Mer/')
 	autreHist = histMatrixFromDir('Data/Ailleurs/')
+	#testHist = histMatrixFromDir('Data/Test/')
 	
 	data, target = assemble(merHist, autreHist)
 	
@@ -50,22 +50,32 @@ def histogramTest(kernel):
 	print "Histogramme: kernel =", kernel," h =", h
 	predit(data, target, imHist, kernel, h)
 	
-
+#Execute le programme avec les images vectorisees
 def vectorTest(kernel):
 
 	imVect = importImageVect()
 	merVect = vectMatrixFromDir('Data/Mer/')
 	autreVect = vectMatrixFromDir('Data/Ailleurs/')
+	#testVect = vectMatrixFromDir('Data/Test/')
 	
 	data, target = assemble(merVect, autreVect)
-	
+
 	h = trouveHyperParam(data, target)
 	print "Vecteur: kernel =", kernel," h =", h
 	predit(data, target, imVect, kernel, h)
 	
-
 	
-vectorTest(kernel)
-#histogramTest(kernel)
+if __name__ == '__main__':
+
+	kernel = noyauPolynomial
+	k = input("Choix du kernel (1-Gaussien / 2-Polynomial): ")
+	if k == 1 :
+		kernel = noyauGaussien
+	
+	t = input("Choix du test (1-Vecteur / 2-Histogramme): ")
+	if t == 1 :
+		vectorTest(kernel)
+	else :
+		histogramTest(kernel)
 
 
