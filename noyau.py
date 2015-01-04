@@ -12,7 +12,7 @@ def noyauGaussien(v1, v2, sigma):
 	else :
 		print "error sigma = 0"
 
-#return exp(-1.0 * dot(array(v1) - array(v2), array(v1) - array(v2)) / (2*sigma**2))
+#return exp(-dot(array(v1) - array(v2), array(v1) - array(v2)) / (2*sigma**2))
 
 # Calcule et retourne la valeur d'un noyau Gaussien pour 2 vecteurs et un entier positif
 def noyauPolynomial(v1, v2, k):

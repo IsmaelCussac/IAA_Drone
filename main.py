@@ -42,7 +42,6 @@ def histogramTest(kernel):
 	imHist = importImageHist()
 	merHist = histMatrixFromDir('Data/Mer/')
 	autreHist = histMatrixFromDir('Data/Ailleurs/')
-	#testHist = histMatrixFromDir('Data/Test/')
 	
 	data, target = assemble(merHist, autreHist)
 	
@@ -56,7 +55,6 @@ def vectorTest(kernel):
 	imVect = importImageVect()
 	merVect = vectMatrixFromDir('Data/Mer/')
 	autreVect = vectMatrixFromDir('Data/Ailleurs/')
-	#testVect = vectMatrixFromDir('Data/Test/')
 	
 	data, target = assemble(merVect, autreVect)
 

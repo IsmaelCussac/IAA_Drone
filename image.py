@@ -9,7 +9,7 @@ def vectImage(directory, nom):
 	mat = array(im)
 	return reshape(mat, (1, 32*32*3))
 
-	
+#Renvoi une matrice contenant les images vectorisees	
 def vectMatrixFromDir(directory):
 
 	images = os.listdir(directory)
@@ -29,7 +29,7 @@ def histImage(directory, nom):
 	width, height = im.size
 	return array(im.histogram()) / (1.0 * width * height)
 	
-	
+#Renvoi une matrice contenant les histogrammes des images		
 def histMatrixFromDir(directory):
 
 	images = os.listdir(directory)
